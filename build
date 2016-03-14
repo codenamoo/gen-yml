@@ -1,0 +1,17 @@
+#!/bin/bash -e
+
+GO=`which go`
+
+VERSION_MAJOR=0
+VERSION_MINOR=0
+VERSION_COUNT=1
+
+EXE_NAME=gen-yml
+VERSION_NAME=${EXE_NAME}-${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_COUNT}
+
+
+godep restore
+
+go build -o bin/${VERSION_NAME} main.go
+ln -sf ${VERSION_NAME} bin/${EXE_NAME}
+
